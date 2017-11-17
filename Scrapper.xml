@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<ScrapperDetails>
+    <baseurl>
+
+        <!-- Xiomi Phones -->
+        <url id="1"  urlAddress="https://www.devicespecifications.com/en/brand/1e7667">
+            <xQuery>
+                declare base-uri 'file:///d:/Notlar-2/kodlar/Scrapper/data/xmldocs/';
+                for $tel in fn:doc('1.xml')//*[contains(@class,'model-listing-container-80')]/div
+                return $tel
+            </xQuery>
+            <linkXQuery>
+
+            </linkXQuery>
+        </url>
+
+        <url id="2"  urlAddress="https://www.gsmarena.com/xiaomi-phones-80.php">
+            <xQuery>
+                declare base-uri 'file:///d:/Notlar-2/kodlar/Scrapper/data/xmldocs/';
+                for $tel in fn:doc('2.xml')//*[contains(@class,'makers')]/ul/li
+                return $tel
+
+            </xQuery>
+            <linkXQuery>
+
+            </linkXQuery>
+        </url>
+
+        <url id="3" urlAddress="http://www.vatanbilgisayar.com/akilli-telefon/">
+            <xQuery>
+declare base-uri 'file:///d:/Notlar-2/kodlar/Scrapper/data/xmldocs/';
+    for $tel in fn:doc('3.xml')//*[contains(@class,'ems-prd ')]/div/div
+    return $tel
+            </xQuery>
+            <linkXQuery>
+
+            </linkXQuery>
+
+        </url>
+
+
+        <url id="4" urlAddress="http://www.hepsiburada.com/xiaomi/android-telefonlar-c-60005201">
+            <xQuery>
+                declare base-uri 'file:///d:/Notlar-2/kodlar/Scrapper/data/xmldocs/';
+                for $tel in fn:doc('4.xml')//*[contains(@class,'top-seller contain-lg-4 contain-md-3 contain-sm-3 fluid')]/li
+                return $tel
+            </xQuery>
+            <linkXQuery>
+
+            </linkXQuery>
+
+        </url>
+
+
+
+        <url id="5" parentId="3" urlAddress="">
+            <xQuery>
+
+            </xQuery>
+            <linkXQuery>
+
+            </linkXQuery>
+
+        </url>
+
+
+
+
+
+    </baseurl>
+
+
+
+</ScrapperDetails>

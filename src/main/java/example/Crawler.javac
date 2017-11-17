@@ -1,0 +1,57 @@
+package example;
+
+import java.io.File;
+import java.io.IOException;
+
+import oracle.xml.xquery.OXQDataSource;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import us.codecraft.xsoup.Xsoup;
+
+import javax.xml.xquery.XQConnection;
+import javax.xml.xquery.XQPreparedExpression;
+import javax.xml.xquery.XQSequence;
+
+public class Crawler {
+	public static Document crawlAsJsoupDoc(String url) {
+		try {
+			Document doc = Jsoup.connect(url).get();
+			String title = doc.title();
+			System.out.println(title);
+			String result = Xsoup.compile("//a/@href").evaluate(doc).get();
+			System.out.println(result);
+			return doc;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	private static void runOracleXQuery(String query) {
+		System.out.println(query);
+
+		OXQDataSource ds = new OXQDataSource();
+		XQConnection con = null;
+		File xqFile=null;
+		try {
+			con = ds.getConnection();
+			XQPreparedExpression expr = con.prepareExpression(query);
+			XQSequence result = expr.executeQuery();
+			System.out.println(result.getSequenceAsString(null));
+
+			result.close();
+			expr.close();
+			con.close();
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+		}
+	}
+
+
+}
